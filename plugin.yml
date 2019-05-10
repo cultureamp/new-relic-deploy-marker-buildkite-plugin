@@ -1,0 +1,19 @@
+name: New Relic deploy marker
+description: On successful deployment creates a New Relic deployment marker
+author: https://github.com/cultureamp
+requirements:
+  - aws
+configuration:
+  properties:
+    app_id:
+      type: string
+    api_key:
+      type: string
+    api_key_ssm_param_name:
+      type: string
+    description:
+      type: string
+    user:
+      type: string
+  required:
+    - app_id
