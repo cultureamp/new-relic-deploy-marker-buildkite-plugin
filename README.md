@@ -1,4 +1,4 @@
-AWS AssumeRole Buildkite Plugin
+New Relic Deployment Marker Buildkite Plugin
 ===============================
 
 A [Buildkite plugin](https://buildkite.com/docs/agent/plugins) to create a [New Relic deployment marker](https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/record-deployments#post-deployment).
