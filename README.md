@@ -19,7 +19,7 @@ Example
           app_id: 123456789
 ```
 
-The New Relic API key can be read from an environment variable `NEW_RELIC_API_KEY` or by using the plugin property `api_key`. The key can also be retrieved from SSM Parameter by creating an entry as `/NEWRELIC_API_KEY`, setting the plugin property `api_key_ssm_param_name` will override the parameter name.
+The New Relic API key can be read from an environment variable `NEW_RELIC_API_KEY` or by using the plugin property `api_key`. The key can also be retrieved from SSM Parameter by creating an entry as `/NEW_RELIC_API_KEY`, setting the plugin property `api_key_ssm_param_name` will override the parameter name.
 
 Options
 -------
@@ -37,7 +37,7 @@ The New Relic REST API key.
 
 ### `api_key_ssm_param_name` (optional)
 
-New Relic REST API key parameter name in AWS SSM. Defaults to `NEWRELIC_API_KEY`.
+New Relic REST API key parameter name in AWS SSM. Defaults to `NEW_RELIC_API_KEY`.
 
 ### `description` (optional)
 
