@@ -17,7 +17,7 @@ create_deploy_marker() {
     api_key=$BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY
   fi
 
-  curl --show-error --fail -X POST "https://api.newrelic.com/v2/applications/${app_id}/deployments.json" \
+  curl -X POST "https://api.newrelic.com/v2/applications/${app_id}/deployments.json" \
     -H "X-Api-Key:${api_key}" -i \
     -H "Content-Type: application/json" \
     -d \
