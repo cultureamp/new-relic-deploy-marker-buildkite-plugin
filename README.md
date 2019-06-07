@@ -10,16 +10,13 @@ Example
 ```yml
   - name: "Deploy Production"
     command: 'bin/ci_deploy'
-  
-  - wait
-
-  - name: "Deployment marker"
     plugins:
-      - cultureamp/newrelic-deploy-marker:
+      - cultureamp/new-relic-deploy-marker:
           app_id: 123456789
+          api_key_ssm_param_name: '/NEW_RELIC_API_KEY'
 ```
 
-The New Relic API key can be read from an environment variable `NEW_RELIC_API_KEY` or by using the plugin property `api_key`. The key can also be retrieved from SSM Parameter by creating an entry as `/NEWRELIC_API_KEY`, setting the plugin property `api_key_ssm_param_name` will override the parameter name.
+The New Relic API key can be read from an environment variable `NEW_RELIC_API_KEY` or by setting the plugin property `api_key`. The key can also be retrieved from SSM Parameter Store by setting the plugin property `api_key_ssm_param_name`.
 
 Options
 -------
@@ -37,7 +34,7 @@ The New Relic REST API key.
 
 ### `api_key_ssm_param_name` (optional)
 
-New Relic REST API key parameter name in AWS SSM. Defaults to `NEWRELIC_API_KEY`.
+New Relic REST API key parameter name in AWS SSM. Defaults to `/NEWRELIC_API_KEY`.
 
 ### `description` (optional)
 
