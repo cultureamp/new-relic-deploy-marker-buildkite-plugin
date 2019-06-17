@@ -1,4 +1,4 @@
-AWS AssumeRole Buildkite Plugin
+New Relic Deployment Marker Buildkite Plugin
 ===============================
 
 A [Buildkite plugin](https://buildkite.com/docs/agent/plugins) to create a [New Relic deployment marker](https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/record-deployments#post-deployment).
@@ -34,7 +34,7 @@ The New Relic REST API key.
 
 ### `api_key_ssm_param_name` (optional)
 
-New Relic REST API key parameter name in AWS SSM. Defaults to `/NEWRELIC_API_KEY`.
+New Relic REST API key parameter name in AWS SSM. Defaults to `/NEW_RELIC_API_KEY`.
 
 ### `description` (optional)
 
