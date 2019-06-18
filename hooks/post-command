@@ -7,12 +7,13 @@ create_deploy_marker() {
   user="${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_USER:-${BUILDKITE_BUILD_CREATOR_EMAIL:-}}"
   revision="${BUILDKITE_BUILD_NUMBER:-}"
   api_key="${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY:-${NEW_RELIC_API_KEY:-}}"
+  aws_region="${AWS_REGION:-"us-west-2"}"
 
   echo "--- :newrelic: Creating deploment marker for $app_id"
 
   if [ -z $api_key ]; then
     ssm_param_name=${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY_SSM_PARAM_NAME:-"/NEW_RELIC_API_KEY"}
-    api_key=$(aws ssm get-parameter --with-decryption --name "$ssm_param_name" --query=Parameter.Value --output=text)
+    api_key=$(aws --region "${aws_region}" ssm get-parameter --with-decryption --name "$ssm_param_name" --query=Parameter.Value --output=text)
   else
     api_key=$BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY
   fi
@@ -26,8 +27,8 @@ create_deploy_marker() {
         "revision": "'"${revision}"'",
         "description": "'"${description}"'",
         "user": "'"${user}"'"
-      } 
-    }' 
+      }
+    }'
 }
 
 main() {
