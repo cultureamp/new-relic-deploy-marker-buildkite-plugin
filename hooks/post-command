@@ -27,7 +27,7 @@ create_deploy_marker() {
         "description": "'"${description}"'",
         "user": "'"${user}"'"
       } 
-  #   }' 
+    }' 
 }
 
 main() {
