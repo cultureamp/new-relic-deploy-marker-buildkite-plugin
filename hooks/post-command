@@ -8,25 +8,25 @@ create_deploy_marker() {
   revision="${BUILDKITE_BUILD_NUMBER:-}"
   api_key="${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY:-${NEW_RELIC_API_KEY:-}}"
 
-  # echo "--- :newrelic: Creating deploment marker for $app_id"
+  echo "--- :newrelic: Creating deploment marker for $app_id"
 
-  # if [ -z $api_key ]; then
-  #   ssm_param_name=${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY_SSM_PARAM_NAME:-"/NEW_RELIC_API_KEY"}
-  #   api_key=$(aws ssm get-parameter --with-decryption --name "$ssm_param_name" --query=Parameter.Value --output=text)
-  # else
-  #   api_key=$BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY
-  # fi
+  if [ -z $api_key ]; then
+    ssm_param_name=${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY_SSM_PARAM_NAME:-"/NEW_RELIC_API_KEY"}
+    api_key=$(aws ssm get-parameter --with-decryption --name "$ssm_param_name" --query=Parameter.Value --output=text)
+  else
+    api_key=$BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY
+  fi
 
-  # curl -X POST "https://api.newrelic.com/v2/applications/${app_id}/deployments.json" \
-  #   -H "X-Api-Key:${api_key}" -i \
-  #   -H "Content-Type: application/json" \
-  #   -d \
-  #   '{
-  #     "deployment": {
-  #       "revision": "'"${revision}"'",
-  #       "description": "'"${description}"'",
-  #       "user": "'"${user}"'"
-  #     } 
+  curl -X POST "https://api.newrelic.com/v2/applications/${app_id}/deployments.json" \
+    -H "X-Api-Key:${api_key}" -i \
+    -H "Content-Type: application/json" \
+    -d \
+    '{
+      "deployment": {
+        "revision": "'"${revision}"'",
+        "description": "'"${description}"'",
+        "user": "'"${user}"'"
+      } 
   #   }' 
 }
 
