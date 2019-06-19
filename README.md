@@ -38,11 +38,11 @@ New Relic REST API key parameter name in AWS SSM. Defaults to `/NEW_RELIC_API_KE
 
 ### `description` (optional)
 
-A high-level description of this deployment, visible in the Overview page and on the Deployments page when you select an individual deployment. Default `BUILDKITE_MESSAGE` (usually the commit message).
+A high-level description of this deployment, visible in the Overview page and on the Deployments page when you select an individual deployment. Defaults to `BUILDKITE_BUILD_URL`.
 
 ### `user` (optional)
 
-A username to associate with the deployment, visible in the Overview page and on the Deployments page.
+A username to associate with the deployment, visible in the Overview page and on the Deployments page. Defaults to `BUILDKITE_BUILD_CREATOR_EMAIL`.
 
 
 References
