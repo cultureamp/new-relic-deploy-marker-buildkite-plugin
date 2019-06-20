@@ -8,7 +8,7 @@ create_deploy_marker() {
   revision="${BUILDKITE_BUILD_NUMBER:-}"
   api_key="${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY:-${NEW_RELIC_API_KEY:-}}"
 
-  echo "--- :newrelic: Creating deploment marker for $app_id"
+  echo "--- :newrelic: Creating deployment marker for $app_id"
 
   if [ -z $api_key ]; then
     ssm_param_name=${BUILDKITE_PLUGIN_NEW_RELIC_DEPLOY_MARKER_API_KEY_SSM_PARAM_NAME:-"/NEW_RELIC_API_KEY"}
