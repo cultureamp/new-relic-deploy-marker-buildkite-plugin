@@ -13,10 +13,9 @@ Example
     plugins:
       - cultureamp/new-relic-deploy-marker:
           app_id: 123456789
-          api_key_ssm_param_name: '/NEW_RELIC_API_KEY'
 ```
 
-The New Relic API key can be read from an environment variable `NEW_RELIC_API_KEY` or by setting the plugin property `api_key`. The key can also be retrieved from SSM Parameter Store by setting the plugin property `api_key_ssm_param_name`.
+The New Relic API key can be read from an environment variable `NEW_RELIC_API_KEY` or by setting the plugin property `api_key`. The key can also be retrieved from SSM Parameter Store by setting the plugin property `api_key_ssm_param_name`. **Note: If using Parameter store ensure that the key exists and your build agent has access to it.**
 
 Options
 -------
